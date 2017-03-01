@@ -5,7 +5,6 @@ dependencies {
     compile project(':CommonFeed')
     compile project(':CommonUtils')
     compile project(':CommonUtils')
-    compile project(':CommonFeed')
     compile project(':WikiLibs')
 }
 
