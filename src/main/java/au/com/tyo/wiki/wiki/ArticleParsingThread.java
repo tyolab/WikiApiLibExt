@@ -1,8 +1,8 @@
 package au.com.tyo.wiki.wiki;
 
-import java.util.ArrayList;
-
 import org.json.JSONException;
+
+import java.util.ArrayList;
 
 import au.com.tyo.utils.TextUtils;
 
@@ -45,8 +45,8 @@ public class ArticleParsingThread extends Thread implements Runnable {
 		
 		// may not be able to get the page, so we search the key words
 		if (page.countParsedSections() == 0) {
-			
-			WikiSearch search = WikiParser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(query), domain);
+			WikiParser parser = WikiApi.getInstance().getParser();
+			WikiSearch search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(query), domain);
 			if (search != null && search.getTitle().length() > 0) {
 				page.setTitle(search.toString());
 				page.setText("");
@@ -55,7 +55,7 @@ public class ArticleParsingThread extends Thread implements Runnable {
 			else {
 				ArrayList<String> queries = TextUtils.buildQueries(query);
 				for (String newSearch : queries) {
-					search = WikiParser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(newSearch), domain);
+					search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(newSearch), domain);
 					if (search != null && search.getTitle().length() > 0) {
 						page.setTitle(search.toString());
 						page.setText("");
