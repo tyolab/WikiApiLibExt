@@ -9,7 +9,6 @@ import au.com.tyo.lang.Unicode;
 import au.com.tyo.parser.XML;
 import au.com.tyo.web.PageBuilder;
 import au.com.tyo.wiki.Constants;
-import au.com.tyo.wiki.wiki.WikiPage;
 
 public class WikiAbstract extends WikiPageBase {
 	
@@ -203,6 +202,7 @@ public class WikiAbstract extends WikiPageBase {
 		}
 		catch (Exception ex) {
 			html = body;
+
 		}
 		return html;
 	}
