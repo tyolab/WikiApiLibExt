@@ -79,7 +79,7 @@ public class ArticleParsingThread extends Thread implements Runnable {
 			retrieve(query, page, domain, areaCode);
 			
 			/* we are not gonna do the html building here
-			 * I cannot rememeber why
+			 * I cannot remember why
 			 */
 //			page.setHtml(WikiHtml.toHtml(page));
 			
