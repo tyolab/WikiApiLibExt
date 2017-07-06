@@ -9,7 +9,6 @@ public interface TaskCaller {
 	void onResourceAvailable();
 	
 	void onFinished();
-//	public void setProgress(int progress);
 
 	void onError();
 	
