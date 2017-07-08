@@ -73,10 +73,13 @@ public class ArticleParsingThread extends Thread implements Runnable {
 			/*
 			 * finish loading the full text
 			 */
-			if (!page.hasFullText())
+			if (!page.hasFullText()) {
 				page.setText(text);
-			
-			retrieve(query, page, domain, areaCode);
+				page.clearSections();
+			}
+
+			if (page.countParsedSections() == 0)
+				retrieve(query, page, domain, areaCode);
 			
 			/* we are not gonna do the html building here
 			 * I cannot remember why
@@ -89,7 +92,8 @@ public class ArticleParsingThread extends Thread implements Runnable {
 			if (caller != null)
 				caller.onParsingError(e.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+            if (caller != null)
+                caller.onParsingError(e.getMessage());
 		}
 	}
 
