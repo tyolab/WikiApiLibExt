@@ -7,10 +7,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile project(':CommonFeed')
-    compile project(':CommonUtils')
-    compile project(':CommonUtils')
-    compile project(':WikiLibs')
-    compile project(':WikiApiLib')
+    api fileTree(dir: 'libs', include: '*.jar')
+    api project(':CommonFeed')
+    api project(':CommonUtils')
+    api project(':CommonUtils')
+    api project(':WikiLibs')
+    api project(':WikiApiLib')
 }
