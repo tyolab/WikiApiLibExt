@@ -117,7 +117,7 @@ public class WikiAbstract extends WikiPageBase {
 	}
 
 	public String buildPage() {
-		String page = new PageBuilder().toHtml(this);
+		String page = new PageBuilder().toHtmlWithEmbeddedTemplate(this);
 		return page;
 	}
 
