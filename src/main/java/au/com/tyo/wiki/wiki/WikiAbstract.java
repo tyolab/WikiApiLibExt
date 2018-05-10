@@ -17,9 +17,9 @@ public class WikiAbstract extends WikiPageBase {
 
 	private static String[] STYLES_N_SCRIPTS = {"jquery-1.3.2.min.js", "min.css", "common.js"};
 	
-	private static String[] THEME_DEPENDANT_CSS = {"min.css" };
+	private static String[] THEME_DEPENDANT_CSS = {"abstract.css" };
 	
-	private static String template = "<article id=\"abstract\"><!-- <div id=\"title\">%s</div>--><div style=\"clear: both;\">%s</div></article>";
+	private static String template = "<article class=\"article_abstract\" id=\"abstract\"><!-- <div id=\"title\">%s</div>--><div style=\"clear: both;\">%s</div></article>";
 	
 	private static String templateImage = "<a href=\"%s\"><img src=\"%s\" style=\"float:right; height: auto; width: %dpx; margin-left: 5px; padding-left: 5px;\" /></a>";
 	
