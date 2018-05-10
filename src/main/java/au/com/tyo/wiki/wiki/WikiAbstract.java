@@ -8,6 +8,7 @@ import au.com.tyo.io.IO;
 import au.com.tyo.lang.Unicode;
 import au.com.tyo.parser.XML;
 import au.com.tyo.web.PageBuilder;
+import au.com.tyo.web.PageInterface;
 import au.com.tyo.wiki.Constants;
 
 public class WikiAbstract extends WikiPageBase {
@@ -251,4 +252,13 @@ public class WikiAbstract extends WikiPageBase {
 		this.infoBlockTextAfterImage = infoBlockTextAfterImage;
 	}
 
+	@Override
+	public PageInterface getXPage() {
+		return getPage().getXPage();
+	}
+
+	@Override
+	public String getLangCode() {
+		return getPage().getLangCode();
+	}
 }
