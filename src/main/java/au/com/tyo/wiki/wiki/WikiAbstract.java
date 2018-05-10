@@ -15,7 +15,7 @@ public class WikiAbstract extends WikiPageBase {
 	
 	public static final String FROM_SOURCE = "<div class=\"font_smaller\">%s from <span style=\"font-style: italic;\">%s</span></div><br>"; 
 
-	private static String[] STYLES_N_SCRIPTS = {"jquery-1.3.2.min.js", "min.css", "common.js"};
+	private static String[] STYLES_N_SCRIPTS = {"jquery-1.3.2.min.js", "css.min.css", "common.js"};
 	
 	private static String[] THEME_DEPENDANT_CSS = {"abstract.css" };
 	
