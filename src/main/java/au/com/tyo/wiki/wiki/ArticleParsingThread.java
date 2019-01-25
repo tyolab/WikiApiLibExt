@@ -30,8 +30,8 @@ public class ArticleParsingThread extends Thread implements Runnable {
 	}
 	
 	public static void retrieveArticle(String query, WikiPage page, String domain, String areaCode) throws Exception {
-		if (page.getText() == null || page.getText().length() == 0)
-			page.setText(WikiApi.getInstance().getArticleWithMobileView(query, page, domain, areaCode));
+//		if (page.getText() == null || page.getText().length() == 0)
+//			page.setText(WikiApi.getInstance().getArticleWithMobileView(query, page, domain, areaCode));
 		
 		retrieveArticle(page);
 	}
