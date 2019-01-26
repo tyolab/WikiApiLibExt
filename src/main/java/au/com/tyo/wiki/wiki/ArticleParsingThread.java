@@ -2,10 +2,6 @@ package au.com.tyo.wiki.wiki;
 
 import org.json.JSONException;
 
-import java.util.ArrayList;
-
-import au.com.tyo.utils.TextUtils;
-
 public class ArticleParsingThread extends Thread implements Runnable {
 	
 	public static final String LOG_TAG = "ArticleParsingThread";
@@ -29,48 +25,50 @@ public class ArticleParsingThread extends Thread implements Runnable {
 		this.setName(LOG_TAG);
 	}
 	
-	public static void retrieveArticle(String query, WikiPage page, String domain, String areaCode) throws Exception {
+	public static void parseArticle(String query, WikiPage page, String domain, String areaCode) throws Exception {
 //		if (page.getText() == null || page.getText().length() == 0)
 //			page.setText(WikiApi.getInstance().getArticleWithMobileView(query, page, domain, areaCode));
 		
-		retrieveArticle(page);
+		parseArticle(page);
 	}
 	
-	public static void retrieveArticle(WikiPage page) throws Exception {
+	public static void parseArticle(WikiPage page) throws Exception {
 		WikiParser.parseJsonArticleText(page.getText(), page);
 	}
 
-	public static void retrieve(String query, WikiPage page, String domain, String areaCode) throws Exception {
-		retrieveArticle(query, page, domain, areaCode);
-		
-		// may not be able to get the page, so we search the key words
-		if (page.countParsedSections() == 0) {
-			WikiParser parser = WikiApi.getInstance().getParser();
-			WikiSearch search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(query), domain);
-			if (search != null && search.getTitle().length() > 0) {
-				page.setTitle(search.toString());
-				page.setText("");
-				retrieveArticle(search.toString(), page, domain, areaCode);
-			}
-			else {
-				ArrayList<String> queries = TextUtils.buildQueries(query);
-				for (String newSearch : queries) {
-					search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(newSearch), domain);
-					if (search != null && search.getTitle().length() > 0) {
-						page.setTitle(search.toString());
-						page.setText("");
-						retrieveArticle(search.toString(), page, domain, areaCode);
-						break;
-					}
-				} // for 
-			} // if the first search for the entire keywords
-		} // we have sections
-	}
+	// This is a article parsing thread not retrieve thread
+	// the retrieval should be done in the loader
+//	public static void retrieve(String query, WikiPage page, String domain, String areaCode) throws Exception {
+//		parseArticle(query, page, domain, areaCode);
+//
+//		// may not be able to get the page, so we search the key words
+//		if (page.countParsedSections() == 0) {
+//			WikiParser parser = WikiApi.getInstance().getParser();
+//			WikiSearch search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(query), domain);
+//			if (search != null && search.getTitle().length() > 0) {
+//				page.setTitle(search.toString());
+//				page.setText("");
+//				parseArticle(search.toString(), page, domain, areaCode);
+//			}
+//			else {
+//				ArrayList<String> queries = TextUtils.buildQueries(query);
+//				for (String newSearch : queries) {
+//					search = parser.getFirstSearchResult(WikiApi.getInstance().getSearchJson(newSearch), domain);
+//					if (search != null && search.getTitle().length() > 0) {
+//						page.setTitle(search.toString());
+//						page.setText("");
+//						parseArticle(search.toString(), page, domain, areaCode);
+//						break;
+//					}
+//				} // for
+//			} // if the first search for the entire keywords
+//		} // we have sections
+//	}
 
 	@Override
 	public void run() {
 		try {
-			/*
+			/**
 			 * finish loading the full text
 			 */
 			if (!page.hasFullText()) {
@@ -79,7 +77,7 @@ public class ArticleParsingThread extends Thread implements Runnable {
 			}
 
 			if (page.countParsedSections() == 0)
-				retrieve(query, page, domain, areaCode);
+				parseArticle(query, page, domain, areaCode);
 			
 			/* we are not gonna do the html building here
 			 * I cannot remember why
