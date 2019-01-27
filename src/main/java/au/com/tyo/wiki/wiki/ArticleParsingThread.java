@@ -70,9 +70,11 @@ public class ArticleParsingThread extends Thread implements Runnable {
 		try {
 			/**
 			 * finish loading the full text
+             *
+             * We are not gonna set the text here
 			 */
 			if (!page.hasFullText()) {
-				page.setText(text);
+				// page.setText(text);
 				page.clearSections();
 			}
 
