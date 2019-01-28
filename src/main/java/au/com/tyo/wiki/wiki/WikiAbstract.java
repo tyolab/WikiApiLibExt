@@ -94,7 +94,7 @@ public class WikiAbstract extends WikiPageBase {
 	public void update(WikiPage page) {
 		if (title == null || !(title.equalsIgnoreCase(page.getTitle()) && abstractText.length() > page.getAbstract().length())) {
 			setPage(page);
-			update(page.isDidYouMean() ? page.getTitle() + " (?)" : page.getTitle(), XML.XMLify(page.getAbstract()));
+			update(/*page.isDidYouMean() ? page.getTitle() + " (?)" : */page.getTitle(), XML.XMLify(page.getAbstract()));
 		}
 	}
 	
