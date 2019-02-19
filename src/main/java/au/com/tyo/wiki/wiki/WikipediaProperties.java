@@ -182,7 +182,7 @@ public class WikipediaProperties {
 		LANG_MAP.put("ko", "한국어"); //  Korean
 		LANG_MAP.put("ko-kp", "한국어 (조선)"); //  Korean (DPRK)
 		LANG_MAP.put("koi", "Перем Коми"); //  Komi-Permyak
-		LANG_MAP.put("kr", "Kanuri"); //  Kanuri, Central
+		LANG_MAP.put("ko", "Kanuri"); //  Kanuri, Central
 		LANG_MAP.put("krc", "Къарачай-Малкъар"); //  Karachay-Balkar
 		LANG_MAP.put("kri", "Krio"); //  Krio
 		LANG_MAP.put("krj", "Kinaray-a"); //  Kinaray-a
